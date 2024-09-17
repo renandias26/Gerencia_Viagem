@@ -8,16 +8,40 @@
 </head>
 
 <body>
-    <h1> User: {{ travel.name }} </h1>
+    <h1> Travel: {{ travel.name }} </h1>
 
-    <form action="{% url 'update' travel.id %}" method="POST">
+    <form action="{% url 'updateTravel' travel.id %}" method="POST">
         {% csrf_token %}
-        <input type="text" name="name" value="{{ travel.name }}">
-        <input type="number" name="value" value="{{ travel.value }}">
-        <input type="date" name="dateLeave" value="{{ travel.dateLeave }}">
-        <input type="date" name="dateCome" value="{{ travel.dateCome }}">
+
+        Name: <input type="text" name="name" value="{{ travel.name }}" required>
+        <br>
+        Value: <input type="number" name="value" value="{{ travel.value }}" required>
+        <br>
+        Date Leave: <input type="date" name="dateLeave" value="{{ travel.dateLeave | date:'Y-m-d' }}" required>
+        <br>
+        Date Come: <input type="date" name="dateCome" value="{{ travel.dateCome | date:'Y-m-d' }}" required>
+        <br>
         <button type="submit">Update</button>
     </form>
+    Destinys:
+    <ul>
+        {% for item in dest %}
+        <li> {{ item.name }}
+            <a href="{% url 'deleteDestiny' item.id %}">
+                <button>Delete</button>
+            </a>
+            {% endfor %}
+            <br>
+            <form action="{% url 'addDestiny' travel.id %}" method="POST">
+                {% csrf_token %}
+                Add Destiny: <input type="text" name="destinyName">
+                <button type="submit">Add Destiny</button>
+            </form>
+        </li>
+    </ul>
+    <a href="{% url 'home' %}">
+        <button>Home</button>
+    </a>
 </body>
 
 </html>

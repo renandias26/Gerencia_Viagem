@@ -17,13 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import home, save, edit, delete, update, create
+from .views import home, updateTravel, delete, update, create, createTravel, deleteDestiny, addDestiny
 
 urlpatterns = [
     path('', home, name='home'),
-    path('save', save, name='save'),
-    path('edit/<int:id>', edit, name='edit'),
-    path('update/<int:id>', update, name='update'),
-    path('delete/<int:id>', delete, name='delete'),
     path('create', create, name='create'),
+    path('update/<int:id>', update, name='edit'),
+    path('delete/<int:id>', delete, name='delete'),
+    path('createTravel', createTravel, name='createTravel'),
+    path('updateTravel/<int:id>', updateTravel, name='updateTravel'),
+    path('deleteDestiny/<int:id>', deleteDestiny, name='deleteDestiny'),
+    path('addDestiny/<int:id>', addDestiny, name='addDestiny'),
 ]

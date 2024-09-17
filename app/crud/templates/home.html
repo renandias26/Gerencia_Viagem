@@ -8,18 +8,24 @@
 </head>
 
 <body>
-    Hello Word!
+    <h1>Travels</h1>
 
     <ul>
         {% for travel in travels %}
-        <li> {{ travel.name }} - {{ travel.age }} </li>
-        <a href="{% url 'edit' travel.id %}">Edit</a>
-        <a href="{% url 'delete' travel.id %}">Delete</a>
+        <li> {{ travel.name }}
+            <a href="{% url 'edit' travel.id %}">
+                <button>Edit</button>
+            </a>
+            <a href="{% url 'delete' travel.id %}">
+                <button>Delete</button>
+            </a>
+        </li>
         {% endfor %}
+    </ul>
 
-    </ul>   
-
-    <a href="{% url 'create' %}">Create User</a>
+    <a href="{% url 'create' %}">
+        <button> Create Travel</button>
+    </a>
 </body>
 
 </html>
