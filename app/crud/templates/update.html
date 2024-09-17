@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> User: {{ travel.name }} </h1>
+
+    <form action="{% url 'update' travel.id %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" value="{{ travel.name }}">
+        <input type="number" name="value" value="{{ travel.value }}">
+        <input type="date" name="dateLeave" value="{{ travel.dateLeave }}">
+        <input type="date" name="dateCome" value="{{ travel.dateCome }}">
+        <button type="submit">Update</button>
+    </form>
+</body>
+
+</html>

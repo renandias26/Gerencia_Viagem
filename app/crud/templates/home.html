@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Hello Word!
+
+    <ul>
+        {% for travel in travels %}
+        <li> {{ travel.name }} - {{ travel.age }} </li>
+        <a href="{% url 'edit' travel.id %}">Edit</a>
+        <a href="{% url 'delete' travel.id %}">Delete</a>
+        {% endfor %}
+
+    </ul>   
+
+    <a href="{% url 'create' %}">Create User</a>
+</body>
+
+</html>
